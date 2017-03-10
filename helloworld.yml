@@ -1,0 +1,9 @@
+---
+  - hosts: localhost
+    user: root
+    tasks:
+    - debug: msg="Hello World"
+    - name: Get installed packages
+      command: dpkg-query -f '${Package} - ${Version}\n' -W
+    - name: Get the OS and version
+      debug: msg="{{ansible_distribution}} - Version {{ansible_distribution_version}}"
